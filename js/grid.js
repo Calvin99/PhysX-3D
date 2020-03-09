@@ -171,7 +171,8 @@ Grid.prototype.select = function() {
 	}
 	
 	if (selected != null) {
-		if (selected.x < 0 || selected.y < 0 || selected.z > this.scale - 1) selected = null;
+		if (selected == "N/A") selected = null;
+		else if (selected.x < 0 || selected.y < 0 || selected.z > this.scale - 1) selected = null;
 		return selected;
 	}
 	

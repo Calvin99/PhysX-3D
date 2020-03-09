@@ -64,22 +64,28 @@ Voxel.prototype.draw = function() {
 }
 
 Voxel.prototype.hover = function() {
-	if (this.a < 0.25 || this.type == "Ghost" || this.history == mouse.placed) return null;
+	if (this.a < 0.25 || this.type == "Ghost") return null;
 
 	if	(mouse.x > this.canvas.x - grid.width / 2) {
 		if (mouse.x < this.canvas.x) {
 			if (mouse.y > this.canvas.y - grid.depth / 2 - grid.height - (mouse.x - this.canvas.x + grid.width / 2) * grid.depth / grid.width) {
-				if (mouse.y < this.canvas.y - grid.depth / 2 - grid.height + (mouse.x - this.canvas.x + grid.width / 2) * grid.depth / grid.width)
-					return {x: this.x, y: this.y, z: this.z + 1}; //Top (Left)
-				else if (mouse.y < this.canvas.y - grid.depth / 2 + (mouse.x - this.canvas.x + grid.width / 2) * grid.depth / grid.width)
-					return {x: this.x - 1, y: this.y, z: this.z}; //Left
+				if (mouse.y < this.canvas.y - grid.depth / 2 - grid.height + (mouse.x - this.canvas.x + grid.width / 2) * grid.depth / grid.width) {
+					if (this.history == mouse.placed) return "N/A";
+					else return {x: this.x, y: this.y, z: this.z + 1}; //Top (Left)
+				} else if (mouse.y < this.canvas.y - grid.depth / 2 + (mouse.x - this.canvas.x + grid.width / 2) * grid.depth / grid.width) {
+					if (this.history == mouse.placed) return "N/A";
+					else return {x: this.x - 1, y: this.y, z: this.z}; //Left
+				}
 			}
 		} else if (mouse.x < this.canvas.x + grid.width / 2) {
 			if (mouse.y > this.canvas.y - grid.depth - grid.height + (mouse.x - this.canvas.x) * grid.depth / grid.width) {
-				if (mouse.y < this.canvas.y - grid.height - (mouse.x - this.canvas.x) * grid.depth / grid.width)
-					return {x: this.x, y: this.y, z: this.z + 1}; //Top(Right)
-				else if (mouse.y < this.canvas.y - (mouse.x - this.canvas.x) * grid.depth / grid.width)
-					return {x: this.x, y: this.y - 1, z: this.z}; //Right
+				if (mouse.y < this.canvas.y - grid.height - (mouse.x - this.canvas.x) * grid.depth / grid.width) {
+					if (this.history == mouse.placed) return "N/A";
+					else return {x: this.x, y: this.y, z: this.z + 1}; //Top(Right)
+				} else if (mouse.y < this.canvas.y - (mouse.x - this.canvas.x) * grid.depth / grid.width) {
+					if (this.history == mouse.placed) return "N/A";
+					else return {x: this.x, y: this.y - 1, z: this.z}; //Right
+				}
 			}
 			
 		}
