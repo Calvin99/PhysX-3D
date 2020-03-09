@@ -129,6 +129,7 @@ Grid.prototype.update = function() {
 
 Grid.prototype.set = function (x, y, z, template) {
 	this.array[x][y][z] = new Voxel(template, x, y, z);
+	this.array[x][y][z].setCanvas();
 	this.array[x][y][z].history = mouse.placed;
 }
 

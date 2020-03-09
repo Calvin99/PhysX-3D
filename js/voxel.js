@@ -10,13 +10,16 @@ function Voxel(template, x, y ,z) {
 	this.history = 0;
 }
 
-//TODO: Draw this face by face for transparency and "shading"
-Voxel.prototype.draw = function() {
+Voxel.prototype.setCanvas = function() {
 	this.canvas = {
 		x: grid.origin.x + this.x * grid.width / 2 - this.y * grid.width / 2,
 		y: grid.origin.y - (this.x + this.y) * grid.depth / 2 - (this.z) * grid.height,
 		color: "#"+this.r+this.g+this.b
 	};
+}
+
+Voxel.prototype.draw = function() {
+	this.setCanvas();
 	
 	//LEFT
 	if(this.a == 1 || this.x == 0 || grid.array[this.x - 1][this.y][this.z].type != this.type) {
@@ -139,7 +142,7 @@ const Properties = {
 	H2: {r: "00", g: "00", b: "00", a: 0, density: 0, viscosity: 0, type: "H2"},
 	N2: {r: "00", g: "00", b: "00", a: 0, density: 0, viscosity: 0, type: "N2"},
 	CO2: {r: "00", g: "00", b: "00", a: 0, density: 0, viscosity: 0, type: "C02"},
-	Sand: {r: "aa", g: "aa", b: "55", a: 1, density: 0.9, viscosity: 0.95, type: "Sand"},
+	Sand: {r: "aa", g: "88", b: "55", a: 1, density: 0.9, viscosity: 0.95, type: "Sand"},
 	Stone: {r: "55", g: "55", b: "55", a: 1, density: 1, viscosity: 1, type: "Stone"},
 	Water: {r: "33", g: "33", b: "88", a: 0.75, density: 0.75, viscosity: 0.3, salt: 0, type: "Water"},
 	Glass: {r: "33", g: "aa", b: "aa", a: 0.5, density: 1, viscosity: 1, type: "Glass"}
