@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>PhysX-3D</title>
+		<link href='physx.css' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="display">
+			<canvas id="physx" width="650" height="650" onmouseover="mouse.hover = true;" onmouseleave="mouse.hover = false;" oncontextmenu="return false;"></canvas>
+			<select id = "type" onchange="mouse.setType(document.getElementById('type').value);" style="cursor: context-menu;">
+				<option value="Stone">Stone</option>
+				<option value="Sand">Sand</option>
+				<option value="Water" >Water</option>
+				<option value="Glass">Glass</option>
+			</select>
+		</div>
+	</body>
+	<script src="js/voxel.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/mouse.js"></script>
+	<script src="js/physx.js"></script>
+</html>
