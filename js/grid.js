@@ -1,6 +1,7 @@
 function Grid(scale) {
 	this.scale = scale;
 	this.width = Width / scale;
+	
 	this.depth = (Height * 2 / 5) / scale;
 	this.height = (Height * 3 / 5) / scale;
 	

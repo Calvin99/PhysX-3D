@@ -10,20 +10,7 @@ function Mouse() {
 }
 
 Mouse.prototype.setType = function(type) {
-	switch (type) {
-		case "Stone":
-			this.type = Properties.Stone;
-			break;
-		case "Sand":
-			this.type = Properties.Sand;
-			break;
-		case "Water":
-			this.type = Properties.Water;
-			break;
-		case "Glass":
-			this.type = Properties.Glass;
-			break;
-	}
+	this.type = Properties[type];
 }
 
 Mouse.prototype.place = function() {
